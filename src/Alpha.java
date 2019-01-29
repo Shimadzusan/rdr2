@@ -8,8 +8,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 class Alpha {
-	Web web = new Web();
-	Web2 web2 = new Web2();
+	
 	Alpha() {
 		long start_time_alpha = System.currentTimeMillis();
 //VACANCY
@@ -29,17 +28,12 @@ class Alpha {
 		
 //RESULT for writing to db
 		String[] value = new String[9];
-		for(int i = 0; i < address.length; i++) {
-			//value[i] = method_alpha(address[i]);
-			value[i] = extract(search_v_vacancyes(web(address[i])));
-		}
+			for(int i = 0; i < address.length; i++) {
+				value[i] = extract(search_v_vacancyes(web(address[i])));
+			}
 		System.out.println(System.currentTimeMillis() - start_time_alpha);
 		
-//		for(int i = 0; i < value.length; i++) {
-//			System.out.println(value[i]);
-//		}
-//		
-//		//RESUME
+//RESUME
 /////////////////////////////////////////////////////////////////////////////////////////////////
 		String[] address_r = new String[9];
 		
@@ -57,17 +51,12 @@ class Alpha {
 		
 //Resul for write to data bases
 		String[] value_r = new String[9];
-		for(int i = 0; i < address_r.length; i++) {
-			//value_r[i] = method_betta(address_r[i]);
-			value_r[i] = extract(search_v_resumes(web(address_r[i])));
-		}
-		
-//		for(int i = 0; i < value_r.length; i++) {
-//			System.out.println(value_r[i]);
-//		}
-		
-//	////////////////////////////////////////////////////////////////////////////////////////////////
-//
+			for(int i = 0; i < address_r.length; i++) {
+				value_r[i] = extract(search_v_resumes(web(address_r[i])));
+			}
+			
+//	////////////////////////////////////////////////////////////////////////////////////////////
+
 		System.out.println();
 		System.out.println("*********************************************************************");
 		System.out.println();
@@ -90,30 +79,16 @@ class Alpha {
 		
 	}
 
-	private String method_betta(String string) {
-		
-		web2.web(string);
-		
-		return web2.s10;
-	}
-
-	private String method_alpha(String string) {
-		return extract(search_v_vacancyes(web(string)));
-	}
-
-
 	private String web(String address) {
-		
 		Document doc = null;
-		try {
-			doc = Jsoup.connect(address).get();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+			try {
+				doc = Jsoup.connect(address).get();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 
-			String web_text = doc.text(); //result ---> Исходный текст
-
-		return web_text;
+			String web_text = doc.text(); //Исходный текст
+				return web_text;
 	}
 	
 	private String search_v_vacancyes(String s){
@@ -121,60 +96,35 @@ class Alpha {
 			s = "";
 		
 		for(int i = 0; i < mass.length; i++){
-			
-			//накарте307вакансий
-			
-				if(mass[i] == 'д' && mass[i+1] == 'р' && mass[i+2] == 'о' && mass[i+3] == 'б' && mass[i+4] == 'н' && mass[i+5] == 'е' && mass[i+6] == 'е'){
-					
-					s = "" + mass[i+7] + mass[i+8] + mass[i+9] + mass[i+10] + mass[i+11]+ mass[i+12];			
+			if(mass[i] == 'д' && mass[i+1] == 'р' && mass[i+2] == 'о' && mass[i+3] == 'б' && mass[i+4] == 'н' && mass[i+5] == 'е' && mass[i+6] == 'е'){
+				s = "" + mass[i+7] + mass[i+8] + mass[i+9] + mass[i+10] + mass[i+11]+ mass[i+12];			
 			}
-			}
-		//System.out.println(s1);
-		//нашли кусок интересующего нас текста и извлекли его присвоив некоторой переменной String
-		//symb = s1;
-		return s;
-		
+		}
+			return s;
 	}
+	
 	private String search_v_resumes(String s){
-		
 		char[] mass = s.toCharArray();
-		s = "";
+			s = "";
 		
 		for(int i = 0; i < mass.length; i++){
-			//катель с - ***
-			
-				if(mass[i] == 'а' && mass[i+1] == 'к' && mass[i+2] == ' ' && mass[i+3] == 'с' && mass[i+4] == 'д' && mass[i+5] == 'е' && mass[i+6] == 'л'){
-					s = "" + mass[i] + mass[i+1] + mass[i+2] + mass[i+3] + mass[i+4]+ mass[i-14] + mass[i-13] + mass[i-12] + mass[i-11] + mass[i-10] + mass[i-9] + mass[i-8] + mass[i-7];
-				}
+			if(mass[i] == 'а' && mass[i+1] == 'к' && mass[i+2] == ' ' && mass[i+3] == 'с' && mass[i+4] == 'д' && mass[i+5] == 'е' && mass[i+6] == 'л'){
+				s = "" + mass[i] + mass[i+1] + mass[i+2] + mass[i+3] + mass[i+4]+ mass[i-14] + mass[i-13] + mass[i-12] + mass[i-11] + mass[i-10] + mass[i-9] + mass[i-8] + mass[i-7];
 			}
-		//System.out.println(s1);
-		//result = "";//обнкление переменной, иначе происходит накопление значения в методе work
-//System.out.println(s1);
-		return s;
+		}
+			return s;
 	}
 	
-	private String extract(String s){
+	private String extract(String s) {
+		char[] array = s.toCharArray();
+			s = "";
 			
-			//из извлеченного куска, что нас интересует извлекается число и преобразуется в тип INT
-			
-			String s5 = "";
-			
-			char[] mass5 = s.toCharArray();
-			
-			for(int i = 0; i < mass5.length; i++){
-				
-				
-					if(Character.isDigit(mass5[i])){
-						s5 = s5 + mass5[i];		
+				for(int i = 0; i < array.length; i++) {
+					if(Character.isDigit(array[i])) {
+						s += array[i];		
+					}
 				}
-			}
-			
-			//int a = Integer.parseInt(s5);
-			System.out.println("value: " + s5 + " ...is extract");
-			//s10 = s5;
-			return s5;
-			
+	System.out.println("value: " + s + " ...is extract");
+					return s;
 		}
-
-	
 }
