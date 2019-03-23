@@ -128,11 +128,11 @@ class Alpha {
 	
 	private String search_v_resumes(String s){
 		char[] mass = s.toCharArray();
-			s = "";
+		s = "";
 		
 		for(int i = 0; i < mass.length; i++){
-			if(mass[i] == 'а' && mass[i+1] == 'к' && mass[i+2] == ' ' && mass[i+3] == 'с' && mass[i+4] == 'д' && mass[i+5] == 'е' && mass[i+6] == 'л'){
-				s = "" + mass[i] + mass[i+1] + mass[i+2] + mass[i+3] + mass[i+4]+ mass[i-14] + mass[i-13] + mass[i-12] + mass[i-11] + mass[i-10] + mass[i-9] + mass[i-8] + mass[i-7];
+			if(mass[i] == 'Н' && mass[i+1] == 'а' && mass[i+2] == 'й' && mass[i+3] == 'д' && mass[i+4] == 'е' && mass[i+5] == 'н' && mass[i+6] == 'о'){
+				s = "" + mass[i+7] + mass[i+8] + mass[i+9] + mass[i+10] + mass[i+11]+ mass[i+12] + mass[i+13] + mass[i+14] + mass[i+15] + mass[i+16];
 			}
 		}
 			return s;
